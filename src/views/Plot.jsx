@@ -23,15 +23,15 @@ export const Plot = () => {
         `https://uatprpwuzi.execute-api.me-central-1.amazonaws.com/dev/samples/${id}`
       );
       const data = await response.json();
-      let content = Array.from(data).reverse();
-      let reading = [];
-      Object.keys(data[0]).map(item=>reading[item]=[]);
-      content.map((item) =>
-        Object.keys(data[0]).map((key) => reading[key].push(item[key]))
-      );
-
-      console.log(reading);
-      setReadings(reading);
+      if (data.length) {
+        let content = Array.from(data).reverse();
+        let reading = [];
+        Object.keys(data[0]).map((item) => (reading[item] = []));
+        content.map((item) =>
+          Object.keys(data[0]).map((key) => reading[key].push(item[key]))
+        );
+        setReadings(reading);
+      }
       setLoading(false);
     };
     if (mounted.current) {
@@ -43,7 +43,7 @@ export const Plot = () => {
   }, []);
 
   return (
-    <section style={{"padding":"3rem"}}>
+    <section style={{ padding: "3rem" }}>
       <div
         className="d-flex flex-column special"
         id="content-wrapper data-vis-wrapper"
@@ -84,17 +84,18 @@ export const Plot = () => {
         </div>
 
         <hr />
-        {!loading && readings.Az.length > 0 ? 
-          Object.keys(readings).map(item => {return (
-            item !== "timestamp" ?
-          <LineChart
-            labels={readings.timestamp}
-            data={readings[item]}
-            heading={item}
-            style={{ height: "390px", width: "100%" }}
-          /> : null)})
-          
-         : (
+        {!loading && readings ? (
+          Object.keys(readings).map((item) => {
+            return !["timestamp", "id", "studyid"].includes(item) ? (
+              <LineChart
+                labels={readings.timestamp}
+                data={readings[item]}
+                heading={item}
+                style={{ height: "390px", width: "100%" }}
+              />
+            ) : null;
+          })
+        ) : (
           <>Loading...</>
         )}
       </div>

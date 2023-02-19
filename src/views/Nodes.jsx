@@ -3,31 +3,65 @@ import { useState, useEffect, useRef } from "react";
 
 const Nodes = (props) => {
   const [nodes, setNodes] = useState([]);
+  const [currNodes, setCurrNodes] = useState([]);
+  const [surveyors, setSurveyors] = useState([]);
+  const [surveyor, setSurveyor] = useState("all");
   const [loading, setLoading] = useState(true);
   const mounted = useRef(true);
 
   useEffect(() => {
-    const fetchNodes = async () => {
-      const response = await fetch(
-        "https://uatprpwuzi.execute-api.me-central-1.amazonaws.com/dev/profiles/"
-      );
-      const data = await response.json();
-      setNodes(data);
+    const fetchData = async () => {
+      {
+        const response = await fetch(
+          "https://uatprpwuzi.execute-api.me-central-1.amazonaws.com/dev/profiles/"
+        );
+        const data = await response.json();
+        setNodes(data);
+        setCurrNodes(data);
+      }
+      {
+        const response = await fetch(
+          "https://uatprpwuzi.execute-api.me-central-1.amazonaws.com/dev/surveyors/"
+        );
+        const data = await response.json();
+        setSurveyors([{ id: -1, name: "all" }].concat(data));
+      }
       setLoading(false);
     };
 
-    if (mounted.current) fetchNodes();
-    return () => {mounted.current = false};
+    if (mounted.current) fetchData();
+    return () => {
+      mounted.current = false;
+    };
   }, []);
+
+  useEffect(() => {
+    if (surveyor === "all") setCurrNodes(nodes);
+    else setCurrNodes(nodes.filter((item) => item.name === surveyor));
+  }, [surveyor]);
 
   return (
     <div className="container-fluid p-5">
-      <div className="d-sm-flex justify-content-between align-items-center mb-4">
-        <h3 className="text-dark mb-0">Studies Performed</h3>
+      <div className="d-sm-flex justify-content-between align-items-center mb-4 row">
+        <div className="col-md-8 col-xl-3">
+          <h3 className="text-dark mb-0">Studies Performed</h3>
+        </div>
+        <div className="col-md-4 col-xl-3">
+          <select
+            className="form-control form-control-sm custom-select custom-select-sm"
+            onChange={(e) => setSurveyor(e.target.value)}
+          >
+            {surveyors.map((item) => (
+              <option key={item.id} value={item.name}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
       <div className="row" style={{ marginTop: 20 }}>
         {!loading && nodes ? (
-          nodes.map(
+          currNodes.map(
             ({
               name,
               time_received,

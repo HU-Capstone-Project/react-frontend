@@ -24,10 +24,10 @@ export const Plot = () => {
       );
       const data = await response.json();
       if (data.length) {
-        let content = Array.from(data).reverse();
+        // let content = Array.from(data).reverse();
         let reading = [];
         Object.keys(data[0]).map((item) => (reading[item] = []));
-        content.map((item) =>
+        data.map((item) =>
           Object.keys(data[0]).map((key) => reading[key].push(item[key]))
         );
         setReadings(reading);

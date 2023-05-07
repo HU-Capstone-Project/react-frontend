@@ -105,7 +105,8 @@ const Nodes = (props) => {
                               <span className="font-weight-bold">
                                 {"End: "}
                               </span>
-                              <span>{`${end_pos_lat}°, ${end_pos_long}°`}</span>
+                              {(end_pos_lat ? <span>{`${end_pos_lat}°, ${end_pos_long}°`}</span> : <span>Not Ended Yet</span>)}
+                              
                             </div>
                           </div>
                         </div>

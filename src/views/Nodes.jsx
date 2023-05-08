@@ -75,15 +75,15 @@ const Nodes = (props) => {
               return (
                 <div key={id} className="col-md-6 col-xl-3 mb-4">
                   <Link style={{ textDecoration: "none" }} to={`/${key}`}>
-                    <div className={`card shadow border-left-info py-2`}>
+                    <div className={`card shadow border-left-info py-2`} style={{borderLeftColor: "#061A40"}}>
                       <div className="card-body">
                         <div className="row align-items-center no-gutters">
                           <div className="col mr-2">
                             <div className={`text-info text-sm mb-1`}>
-                              <span className={`font-weight-bold`}>
+                              <span className={`font-weight-bold text-dark text-sm`} >
                                 {"Surveyor: "}
                               </span>
-                              <span>{name}</span>
+                              <span style={{"color":"#061A40"}} className="font-weight-bold">{name}</span>
                             </div>
                             <div className="text-dark text-sm">
                               <span className="font-weight-bold">

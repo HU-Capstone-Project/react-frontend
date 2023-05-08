@@ -1,94 +1,24 @@
 import React from "react";
+import screens from '../../src/img/screens.png'
+import bg from '../../src/img/bg.png'
+import poster from '../../src/img/poster.png'
+// #061a40
 
 const About = () => {
   return (
-    <div>
-      <main className="page hire-me-page">
-        <section className="portfolio-block hire-me">
-          <div className="container">
-            <div className="heading">
-              <img
-                src="/static/assets/img/us.jpeg"
-                style={{ height: "200px", margin: "21px" }}
-              />
-              <h2>Division of Labour</h2>
-            </div>
-            <div className="row">
-              <div className="col-auto col-md-4">
-                <div className="card special-skill-item border-0">
-                  <div className="card-header bg-transparent border-0">
-                    <i className="icon ion-ios-star"></i>
-                  </div>
-                  <div className="card-body">
-                    <h3 className="card-title">Fizza Rubab</h3>
-                    <p className="card-text">
-                      Algorithm Implementation <br /> Generative Art
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="card special-skill-item border-0">
-                  <div className="card-header bg-transparent border-0">
-                    <i className="icon ion-trophy"></i>
-                  </div>
-                  <div className="card-body">
-                    <h3 className="card-title">Mohammad Hasan Tariq</h3>
-                    <p className="card-text">
-                      GUI Server Implementation
-                      <br /> Backend management
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="card special-skill-item border-0">
-                  <div className="card-header bg-transparent border-0">
-                    <i className="icon ion-ios-star"></i>
-                  </div>
-                  <div className="card-body">
-                    <h3 className="card-title">Muhammad Aqib Khan</h3>
-                    <p className="card-text">
-                      Front-end Handling
-                      <br /> Image Handling
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row justify-content-center">
-              <div className="col-md-4">
-                <div className="card special-skill-item border-0">
-                  <div className="card-header bg-transparent border-0">
-                    <i className="icon ion-ios-star"></i>
-                  </div>
-                  <div className="card-body">
-                    <h3 className="card-title">Ruhama Naeem</h3>
-                    <p className="card-text">
-                      Algorithm Implementation
-                      <br /> Image Handling
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="card special-skill-item border-0">
-                  <div className="card-header bg-transparent border-0">
-                    <i className="icon ion-ios-star"></i>
-                  </div>
-                  <div className="card-body">
-                    <h3 className="card-title">Sameer Pervez</h3>
-                    <p className="card-text">
-                      Algorithm Implementation
-                      <br /> Presentation Building
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
+    <div style={{ position: "relative" }}>
+      <img src={bg} style={{ width: "100%", position: "absolute", zIndex: "-1" }} />
+      <div className='about' style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+        <div className="desc" style={{color:'white'}}>
+          <h3>About Us</h3>
+          <p>This project presents the development of a low-cost inertial profilometer to assess road quality in Karachi, Pakistan, using accelerometer sensors and Internet of Things (IoT) technology. The system provides accurate road surface measurements, calculates the International Roughness Index (IRI), and generates detailed road assessment maps using GPS data. In addition to addressing societal, health, and economic concerns, the project emphasizes environmental sustainability and adherence to engineering standards. </p>
+        </div>
+        <img src={screens}/>
+      </div>
+      <div style={{textAlign: 'center'}}>
+        <h3 style={{textAlign:'center', color: '#061a40'}}>System Overview</h3>
+        <img src={poster} style={{width:'50%', boxShadow: '0px 0px 8px 0px rgba(0,0,0,0.2)'}}/>
+      </div>
     </div>
   );
 };

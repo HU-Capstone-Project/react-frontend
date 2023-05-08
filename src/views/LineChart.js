@@ -34,7 +34,35 @@ function utcToDateTime(utcDt){
     
 }
 
+const labelMap = {
+  "Gx": "Gyroscope value in X dimension for IMU 1",
+  "Gx2": "Gyroscope value in X dimension for IMU 2",
+  "Gy": "Gyroscope value in Y dimension for IMU 1",
+  "Gy2": "Gyroscope value in Y dimension for IMU 2",
+  "Gz": "Gyroscope value in Z dimension for IMU 1",
+  "Gz2": "Gyroscope value in Z dimension for IMU 2",
+  "Ax": "Accelerometer value in X dimension for IMU 1",
+  "Ax2": "Accelerometer value in X dimension for IMU 2",
+  "Ay": "Accelerometer value in Y dimension for IMU 1",
+  "Ay2": "Accelerometer value in Y dimension for IMU 2",
+  "Az": "Accelerometer value in Z dimension for IMU 1",
+  "Az2": "Accelerometer value in Z dimension for IMU 2",
+  "Mx": "Magnetometer value in X dimension for IMU 1",
+  "Mx2": "Magnetometer value in X dimension for IMU 2",
+  "My": "Magnetometer value in Y dimension for IMU 1",
+  "My2": "Magnetometer value in Y dimension for IMU 2",
+  "Mz": "Magnetometer value in Z dimension for IMU 1",
+  "Mz2": "Magnetometer value in Z dimension for IMU 2",
+  "air": "Air Quality Index",
+  "temperature": "Temperature °C",
+  "humidity": "Humidity %",
+  "pressure": "Pressure hPa",
+  "iri1": "Instantaneous IRI value for IMU 1",
+  "iri2": "Instantaneous IRI value for IMU 2",
+};
+
 export const LineChart = (props) => {
+  const label = labelMap[props.heading] || props.heading;
   return (
     <div className="chart-bar-all">
       <Line
@@ -42,10 +70,10 @@ export const LineChart = (props) => {
           labels: props.labels.map(x => utcToDateTime(x)),
           datasets: [
             { // received
-              label: props.heading,
+              label: label,
               data: props.data,
-              backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-              borderColor: ["rgba(255, 99, 132, 1)"],
+              backgroundColor: ["#36B9CC33"],
+              borderColor: ["#36B9CC"],
               borderWidth: 1,
             },
           ],
@@ -58,22 +86,22 @@ export const LineChart = (props) => {
             y : {
               min: props.ymin,
               max: props.ymax,
-              },
+            },
             x : {
+              title: {
+                display: true,
+                text: 'Time',
+              },
               ticks: {
                 maxRotation: 0,
-                minRotation: 0
-              }
+                minRotation: 0,
+                padding: 10,
+                fontSize: 14,
+              },
+              grid: {
+                display: false,
+              },
             }
-          },
-          ticks: {
-            maxTicksLimit: 4.5,
-            
-          },
-          legend: {
-            labels: {
-              fontSize: 25,
-            },
           },
         }}
       />

@@ -79,25 +79,32 @@ export const Plot = () => {
             </Link>
           </div>
           <div className="col-7">
-            <h3>Visualizing Data for {id}</h3>
+            <h3>Back to Dashboard</h3>
           </div>
         </div>
 
         <hr />
+        <div className="d-sm-flex justify-content-between align-items-center mb-4 row p-5">
         {!loading && readings ? (
+          
           Object.keys(readings).map((item) => {
             return !["timestamp", "id", "studyid"].includes(item) ? (
+              <div className="col-md-12 col-xl-6 p-4" >
+                <div className="card-body" style={{ borderRadius: "10px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)" }}>
               <LineChart
                 labels={readings.timestamp}
                 data={readings[item]}
                 heading={item}
                 style={{ height: "390px", width: "100%" }}
               />
+              </div>
+              </div>
             ) : null;
           })
         ) : (
           <>Loading...</>
         )}
+        </div>
       </div>
     </section>
   );

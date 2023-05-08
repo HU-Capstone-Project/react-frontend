@@ -15,49 +15,20 @@ function App() {
 
   return (
     <Router>
-      <header
-        className="header"
-        style={{
-          padding: "2% 2%",
-          display: "flex",
-          justifyContent: "space-between",
-          backgroundColor: "#061A40",
-          boxShadow:''
-        }}
-      >
-        <div
-          style={{
-            fontSize: "1.5em",
-            margin: ".6em 0",
-            display: "inline-block",
-          }}
-        >
-          <h1
-            style={{ fontSize: "1.75rem", fontWeight: 600 }}
-            className="navbar-brand"
-          >
-            <Link to="/" style={{ textDecoration: "none", color: "#FCF7F8" }}>
-              Road Health Monitoring
-            </Link>
+      <header className="header" style={{"padding":"2% 2%", paddingTop:'0', paddingBottom:'0',"display":"flex","justifyContent":"space-between","backgroundColor":"#061a40", boxShadow:'0px 0px 8px 0px rgba(0,0,0,0.2)' , borderRadius:'0', zIndex:'7', position:'fixed', top:'0', width:'100%'}}>
+        <div style={{"fontSize":"1.5em","margin":".6em 0","display":"inline-block"}}>
+          <h1 style={{"fontSize":"1.75rem","fontWeight":600}} className="navbar-brand">
+            <a style={{"textDecoration":"none","color":"#FCF7F8"}}>Road Health Monitoring</a>
           </h1>
         </div>
-        <nav>
-          <Link to="/home" style={linkStyle}>
-            Home
-          </Link>
-          <Link to="/about" style={linkStyle}>
-            About
-          </Link>
-          <Link to="/team" style={linkStyle}>
-            Team
-          </Link>
-        </nav>
+        <div style={{"color":"#FCF7F8", marginTop:'2%'}}>
+          <a><NavLink to='/' style={{"color":"#FCF7F8"}}>About</NavLink></a>
+          <a><NavLink to='/dashboard' style={{"color":"#FCF7F8", paddingLeft:'4rem', marginRight:'1rem'}}>Dashboard</NavLink></a>
+        </div>
       </header>
       <Routes>
-        <Route path="/" element={<Nodes />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/team" element={<Team />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/dashboard" element={<Nodes />} />
+        <Route path="/" element={<About />} />
         <Route path="/:id" element={<Plot />} />
       </Routes>
     </Router>

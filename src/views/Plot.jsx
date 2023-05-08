@@ -43,7 +43,7 @@ export const Plot = () => {
   }, []);
 
   return (
-    <section style={{ padding: "3rem" }}>
+    <section style={{ padding: "3rem", marginTop:'5%'}}>
       <div
         className="d-flex flex-column special"
         id="content-wrapper data-vis-wrapper"

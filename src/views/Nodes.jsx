@@ -73,7 +73,7 @@ const Nodes = (props) => {
               key,
             }) => {
               return (
-                <div key={id} className="col-md-6 col-xl-3 mb-4">
+                <div key={id} className="col-md-6 col-xl-3 mb-4" style={{marginTop:'2%'}}>
                   <Link style={{ textDecoration: "none" }} to={`/${key}`}>
                     <div className={`card shadow border-left-info py-2`} style={{borderLeftColor: "#061A40"}}>
                       <div className="card-body">

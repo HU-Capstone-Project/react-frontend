@@ -18,10 +18,11 @@ function App() {
       <header
         className="header"
         style={{
-          padding: "1em 3em",
+          padding: "2% 2%",
           display: "flex",
           justifyContent: "space-between",
-          backgroundColor: "#061A40",
+          backgroundColor: "white",
+          boxShadow:''
         }}
       >
         <div

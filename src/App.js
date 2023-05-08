@@ -13,13 +13,13 @@ function App() {
           </h1>
         </div>
         <div style={{"color":"#FCF7F8", marginTop:'2%'}}>
-          <a><NavLink to='/'></NavLink>About</a>
-          <a><NavLink to='/'></NavLink>Dashboard</a>
+          <a><NavLink to='/' style={{"color":"#FCF7F8"}}>About</NavLink></a>
+          <a><NavLink to='/dashboard' style={{"color":"#FCF7F8", paddingLeft:'4rem', marginRight:'1rem'}}>Dashboard</NavLink></a>
         </div>
       </header>
       <Routes>
-        <Route path="/" element={<Nodes />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/dashboard" element={<Nodes />} />
+        <Route path="/" element={<About />} />
         <Route path="/:id" element={<Plot />} />
       </Routes>
     </Router>

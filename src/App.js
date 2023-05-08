@@ -21,7 +21,7 @@ function App() {
           padding: "2% 2%",
           display: "flex",
           justifyContent: "space-between",
-          backgroundColor: "white",
+          backgroundColor: "#061A40",
           boxShadow:''
         }}
       >

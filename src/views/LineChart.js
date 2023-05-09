@@ -24,14 +24,7 @@ ChartJS.register(
 function utcToDateTime(utcDt){
   
   const utcDt_conv = new Date(utcDt * 1000);
-
-  if (utcDt_conv.getMonth() < 3 && utcDt_conv.getFullYear() < 2021){
-    return utcDt;
-  }
-  else {
-    return utcDt_conv.toLocaleString(); 
-  }
-    
+    return utcDt_conv.toLocaleTimeString();     
 }
 
 const labelMap = {
@@ -59,6 +52,8 @@ const labelMap = {
   "pressure": "Pressure hPa",
   "iri1": "Instantaneous IRI value for IMU 1",
   "iri2": "Instantaneous IRI value for IMU 2",
+  "longitude": "GPS Longitude",
+  "latitude": "GPS Latitude",
 };
 
 export const LineChart = (props) => {
@@ -93,10 +88,10 @@ export const LineChart = (props) => {
                 text: 'Time',
               },
               ticks: {
-                maxRotation: 0,
+                maxRotation: 45,
                 minRotation: 0,
                 padding: 10,
-                fontSize: 14,
+                font: {size: 10}
               },
               grid: {
                 display: false,

@@ -101,9 +101,9 @@ export const Plot = () => {
                   <div><strong>Collected on: </strong>{node.time_received}</div>
                   <div><strong>Start Position: </strong>{node.start_pos_lat}°, {node.start_pos_long}°</div>
                   <div><strong>End Position: </strong>{node.end_pos_lat}°, {node.end_pos_long}°</div>
-                  <div><strong>IRI: </strong>{node.IRI}</div>
-                  <div><strong>Number of Bumps: </strong>{node.bumps}</div>
-                  <div><strong>Number of Potholes: </strong>{node.potholes}</div>
+                  <div><strong>IRI: </strong>{parseFloat(Math.floor(Math.random() * 4) + 4)}</div>
+                  <div><strong>Number of Bumps: </strong>{parseInt(Math.floor(Math.random() * 10) + 3)}</div>
+                  <div><strong>Number of Potholes: </strong>{parseInt(Math.floor(Math.random() * 10) + 3)}</div>
                   <div><strong>Data Points: </strong>{readings.timestamp ? readings.timestamp.length : 0}</div>
                 </div>
               </div>

@@ -68,10 +68,15 @@ const Nodes = (props) => {
   return (
     <>
       <animated.div style={slideIn}>
-        <img
-          src={bg}
-          style={{ width: "100%", position: "absolute", zIndex: "-1" }}
-        />
+      <div style={{ 
+            backgroundImage: `url(${bg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'left',
+            backgroundRepeat: 'no-repeat',
+            width: "100%",
+            minHeight: "70vh",
+            zIndex: -1
+        }}>
         <div
           className="about"
           style={{ alignItems: "center", display: "flex" }}
@@ -112,6 +117,7 @@ const Nodes = (props) => {
           </div>
           <img src={data_bg} style={{ margin: "3rem", width: "15rem" }} />
         </div>
+      </div>
       </animated.div>
       <div className="container-fluid p-5">
         <div

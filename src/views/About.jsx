@@ -16,7 +16,14 @@ const About = () => {
   return (
     <div style={{ position: "relative" }}>
     <animated.div style={slideIn}>
-      <img src={bg} style={{ width: "100%", position: "absolute", zIndex: "-1"}} />
+    <div style={{ 
+            backgroundImage: `url(${bg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'left',
+            backgroundRepeat: 'no-repeat',
+            width: "100%",
+            minHeight: "70vh"
+        }}>
       <div className='about' style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
         <div className="desc" style={{color:'white', padding:'10rem 5rem', fontSize: "1.2rem"}}>
           <h3 style={{fontWeight:'600'}}>About Us</h3>
@@ -24,6 +31,7 @@ const About = () => {
         </div>
         <img src={screens} style={{marginTop:'3rem'}} className="fade-in"/>
       </div>
+    </div>
     </animated.div>
       <div style={{textAlign: 'center', marginTop: "15rem"}}>
         <h3 style={{textAlign:'center', color: '#061a40', fontWeight:'600'}}>Project Overview</h3>
